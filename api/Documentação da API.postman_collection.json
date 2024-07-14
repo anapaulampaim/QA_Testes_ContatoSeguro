@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "58ed96c2-5434-4b2f-b591-9208ecdac49c",
+		"name": "Documentação da API",
+		"description": "A API deste projeto consiste em um conjunto de endpoints RESTful para gerenciar usuários e empresas. Utilizando métodos HTTP como GET, POST, PATCH e DELETE, os endpoints permitem realizar operações de criação, leitura, atualização e exclusão de dados. O projeto oferece integração com um banco de dados MySQL e é executado localmente através do Docker, facilitando o desenvolvimento e os testes.\n\nOs principais endpoints da API incluem:\n\n- **Home Route**: Retorna uma mensagem de boas-vindas ao acessar a raiz da aplicação.\n    \n- **User Routes**: Permitem operações como listagem de usuários, obtenção de um usuário por ID, criação, atualização e exclusão de usuários.\n    \n- **Company Routes**: Oferecem funcionalidades similares para empresas, como listagem, obtenção por ID, criação, atualização e exclusão de empresas.\n    \n\nOs endpoints são documentados utilizando padrões BDD, facilitando a compreensão e a criação de testes automatizados. Esta API é parte integral do projeto de teste técnico, destinado a avaliar habilidades em QA, incluindo criação de casos de teste, testes automatizados E2E e práticas de documentação eficazes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36958817"
+	},
+	"item": [
+		{
+			"name": "Test_Home_Route",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						""
+					]
+				},
+				"description": "Endpoint de teste para verificar se a rota inicial está acessível."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"protocolProfileBehavior": {
+				"strictSSL": true,
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"removeRefererHeaderOnRedirect": true,
+				"insecureHTTPParser": false,
+				"tlsPreferServerCiphers": true,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"user"
+					]
+				},
+				"description": "Retorna todos os usuários cadastrados."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/user/33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"user",
+						"33"
+					]
+				},
+				"description": "Retorna um usuário específico com base no ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"protocolProfileBehavior": {
+				"strictSSL": true,
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"removeRefererHeaderOnRedirect": true,
+				"insecureHTTPParser": false,
+				"tlsPreferServerCiphers": true,
+				"disableCookies": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"name\": \"Hugo Marcelo\",\r\n        \"email\": \"hugomarcelo@example.com\",\r\n        \"companies\": [5, 4, 6]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8400/api/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"user",
+						"create"
+					]
+				},
+				"description": "Cria um novo usuário com os dados fornecidos."
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"name\": \"hugo\",\r\n     \"e-mail\": \"hugo@gmail.com\",\r\n     \"companies\": [\"Renner\"]\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8400/api/user/58",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"user",
+						"58"
+					]
+				},
+				"description": "Atualiza os dados de um usuário existente com base no ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/user/58/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"user",
+						"58",
+						"delete"
+					]
+				},
+				"description": "Remove um usuário específico com base no ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/company?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"company"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				},
+				"description": "Retorna todas as empresas cadastradas."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Company by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/company/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"company",
+						"1"
+					]
+				},
+				"description": "Retorna informações detalhadas de uma empresa específica com base no ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n     \"name\": \"Teste\",\r\n     \"cnpj\": \"33333333333\",\r\n     \"adress\": {\r\n         \"cep\": \"93080130\",\r\n         \"country\": \"Brasil\",\r\n         \"city\": \"Porto Alegre\",\r\n         \"street_location\": \"Lasar\",\r\n         \"number\": \"300\",\r\n         \"district\": \"Lindoia\"\r\n    }\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8400/api/company/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"company",
+						"create"
+					]
+				},
+				"description": "Cria uma nova empresa com os dados fornecidos."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Company",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"name\": \"Veterinarios e cia\",\r\n     \"cnpj\": \"33333333333\",\r\n     \"adress\": {\r\n         \"cep\": \"93080130\",\r\n         \"country\": \"Brasil\",\r\n         \"state\": \"RS\",\r\n         \"city\": \"Porto\",\r\n         \"street\": \"Krakoa\",\r\n         \"number\": \"300\",\r\n         \"district\": \"Lindoia\"\r\n    }\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8400/api/company/5/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"company",
+						"5",
+						"update"
+					]
+				},
+				"description": "Atualiza os dados de uma empresa existente com base no ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8400/api/company/1/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8400",
+					"path": [
+						"api",
+						"company",
+						"1",
+						"delete"
+					]
+				},
+				"description": "Remove uma empresa específica com base no ID."
+			},
+			"response": []
+		}
+	]
+}
